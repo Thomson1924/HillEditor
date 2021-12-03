@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
+using HillEditor.Modele_xD;
 
 namespace HillEditor
 {
@@ -20,6 +21,7 @@ namespace HillEditor
 
             BasicHillEditor(newhill);
             newhill.PreserveWhitespace = true;
+            //Lista którą podaje user(czyli np. cały ten inpuyt UserFromCreateSkocznias)
             List<string> lista = new List<string> {
                 new string ("100"),
                 new string ("100"),
@@ -33,7 +35,8 @@ namespace HillEditor
                 new string ("100"),
                 new string ("100")
             };
-            SprawdzSekcje(a);
+
+            SetdokumentxD(a, lista);
 
             SaveDocPleaseWchuj(newhill,"AleSeSkacze2","ITam","ATHXD");
         }
@@ -59,18 +62,6 @@ namespace HillEditor
             using (FileStream file = File.Create(path))
             {
                 writer.Serialize(file, doc);
-            }
-        }
-
-        static void SprawdzSekcje(XmlNode mainNode)
-        {
-            XmlNodeList aa = mainNode.ChildNodes;
-            foreach(XmlNode item in aa)
-            {
-                foreach(XmlNode bb in item.ChildNodes)
-                {
-                    bb.Value = "Aa";
-                }
             }
         }
     }
