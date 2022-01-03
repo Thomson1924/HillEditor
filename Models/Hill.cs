@@ -18,7 +18,7 @@ namespace HillEditor.Models
         public Weather weather { get; set; }
         public Inrun inrun { get; set; }
         public Dhill dhill { get; set; }
-        public Profile profile { get; set; }
+        public RightProfile profile { get; set; }
         public Terrain terrain { get; set; }
         public Pillar pillar { get; set; }
 
@@ -55,7 +55,7 @@ namespace HillEditor.Models
 
         public class Inrun
         {
-            public Profile profile { get; set; }
+            public InrunProfile profile { get; set; }
             public Track track { get; set; }
             public Guardrail guardrail { get; set; }
             public Startgate startgate { get; set; }
@@ -63,7 +63,7 @@ namespace HillEditor.Models
             public Frame frame { get; set; }
             public Flag flag { get; set; }
             public Twigs twigs { get; set; }
-            public class Profile
+            public class InrunProfile
             {
                 [XmlAttribute]
                 public string e { get; set; } = "91.5";
@@ -200,7 +200,7 @@ namespace HillEditor.Models
         }
         public class Dhill
         {
-            public Profile profile { get; set; }
+            public DhillProfile profile { get; set; }
             public Fence fence { get; set; }
             public Judgetower judgetower { get; set; }
             public Lights lights { get; set; }
@@ -211,7 +211,7 @@ namespace HillEditor.Models
             public Lines lines { get; set; }
             public Numbers numbers { get; set; }
 
-            public class Profile
+            public class DhillProfile
             {
                 [XmlAttribute]
                 public string alpha { get; set; } = "6.28";
@@ -367,7 +367,7 @@ namespace HillEditor.Models
                 public string max { get; set; } = "140";
             }
         }
-        public class Profile
+        public class RightProfile
         {
             public Start start { get; set; }
             public Line line { get; set; }
@@ -397,15 +397,45 @@ namespace HillEditor.Models
                 public string refx { get; set; } = "dhill";
             }
         }
+        public class LeftProfile
+        {
+            public Start start { get; set; }
+            public Line line { get; set; }
+
+            [XmlAttribute]
+            public string id { get; set; } = "inrun-left";
+            [XmlAttribute]
+            public string side { get; set; } = "left";
+            [XmlAttribute]
+            public string maxstep { get; set; } = "1000";
+            public class Start
+            {
+                [XmlAttribute]
+                public string x { get; set; } = "-10";
+                [XmlAttribute]
+                public string y { get; set; } = "1.0";
+                [XmlAttribute]
+                public string refx { get; set; } = "inrun";
+            }
+            public class Line
+            {
+                [XmlAttribute]
+                public string x { get; set; } = "0";
+                [XmlAttribute]
+                public string y { get; set; } = "1.0";
+                [XmlAttribute]
+                public string refx { get; set; } = "dhill";
+            }
+        }
         public class Terrain
         {
-            public Profile profile { get; set; }
+            public TerrainProfile profile { get; set; }
             public Trees trees { get; set; }
             public Blocks blocks { get; set; }
             public Houses houses { get; set; }
             public Audience audience { get; set; }
 
-            public class Profile
+            public class TerrainProfile
             {
                 [XmlAttribute(AttributeName = "in")]
                 public string In { get; set; } = "0.7";
@@ -535,10 +565,19 @@ namespace HillEditor.Models
 
         public void Save(string fileName)
         {
-            using (var stream = new FileStream(fileName, FileMode.Create))
+            XmlSerializerNamespaces emptyNamespaces = new XmlSerializerNamespaces(new[] { XmlQualifiedName.Empty });
+
+            XmlSerializer serializer = new XmlSerializer(typeof(Hill), new XmlRootAttribute("hill"));
+
+            XmlWriterSettings settings = new XmlWriterSettings
             {
-                XmlSerializer xml = new XmlSerializer(typeof(Hill));
-                xml.Serialize(stream, this);
+                Indent = true,
+                OmitXmlDeclaration = true
+            };
+
+            using (XmlWriter xmlWriter = XmlWriter.Create(fileName, settings))
+            {
+                serializer.Serialize(xmlWriter, this, emptyNamespaces);
             }
         }
     }
