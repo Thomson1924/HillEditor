@@ -16,9 +16,9 @@ namespace HillEditor.Models
         public string version { get; set; } = "DSJ4-1.7.0";
         public Location location { get; set; }
         public Weather weather { get; set; }
-        //public Inrun inrun { get; set; }
+        public Inrun inrun { get; set; }
         public Dhill dhill { get; set; }
-        //public Profile profile { get; set; }
+        public Profile profile { get; set; }
         public Terrain terrain { get; set; }
 
 
@@ -52,151 +52,151 @@ namespace HillEditor.Models
             public string fogprobability { get; set; } = "0.1";
         }
 
-        //public class Inrun
-        //{
-        //    public Profile profile { get; set; }
-        //    public Track track { get; set; }
-        //    public Guardrail guardrail { get; set; }
-        //    public Startgate startgate { get; set; }
-        //    public Startbanner startbanner { get; set; }
-        //    public Frame frame { get; set; }
-        //    public Flag flag { get; set; }
-        //    public Twigs twigs { get; set; }
-        //    public class Profile
-        //    {
-        //        [XmlAttribute]
-        //        public string e { get; set; } = "91.5";
-        //        [XmlAttribute]
-        //        public string es { get; set; } = "15";
-        //        [XmlAttribute]
-        //        public string t { get; set; } = "6.43";
-        //        [XmlAttribute]
-        //        public string gamma { get; set; } = "33.5";
-        //        [XmlAttribute]
-        //        public string alpha { get; set; } = "10.5";
-        //        [XmlAttribute]
-        //        public string r1 { get; set; } = "105";
-        //        [XmlAttribute]
-        //        public string s { get; set; } = "2.5";
-        //        [XmlAttribute]
-        //        public string b1 { get; set; } = "2.0";
-        //        [XmlAttribute]
-        //        public string z0 { get; set; } = "0.5";
-        //        [XmlAttribute]
-        //        public string l { get; set; } = "6.5";
-        //        [XmlAttribute]
-        //        public string f { get; set; } = "2.0";
-        //    }
-        //    public class Track
-        //    {
-        //        [XmlAttribute]
-        //        public string type { get; set; } = "ceramic";
-        //        [XmlAttribute]
-        //        public string snow { get; set; } = "false";
-        //    }
-        //    public class Guardrail
-        //    {
-        //        [XmlAttribute]
-        //        public string z1 { get; set; } = "-1.0";
-        //        [XmlAttribute]
-        //        public string z2 { get; set; } = "1.0";
-        //        [XmlAttribute]
-        //        public string x { get; set; } = "10";
-        //    }
-        //    public class Startgate
-        //    {
-        //        [XmlAttribute(AttributeName = "default")]
-        //        public string Default { get; set; } = "8";
-        //        [XmlAttribute]
-        //        public string max { get; set; } = "30";
-        //        [XmlAttribute]
-        //        public string step { get; set; } = "0.35";
-        //        [XmlAttribute]
-        //        public string wind { get; set; } = "2.4";
-        //        [XmlAttribute]
-        //        public string z1 { get; set; } = "-1.0";
-        //        [XmlAttribute]
-        //        public string z2 { get; set; } = "1.0";
-        //        [XmlAttribute]
-        //        public string pz1 { get; set; } = "-0.8";
-        //        [XmlAttribute]
-        //        public string pz2 { get; set; } = "0.8";
-        //        [XmlAttribute]
-        //        public string t1 { get; set; } = @"Textures\metal.png";
-        //        [XmlAttribute]
-        //        public string m1 { get; set; } = @"Materials\material1.xml";
-        //        [XmlAttribute]
-        //        public string c1 { get; set; } = "0xaaaaaa";
-        //        [XmlAttribute]
-        //        public string t2 { get; set; } = @"Textures\metal.png";
-        //        [XmlAttribute]
-        //        public string m2 { get; set; } = @"Materials\material1.xml";
-        //        [XmlAttribute]
-        //        public string c2 { get; set; } = "0x999999";
-        //        [XmlAttribute]
-        //        public string t3 { get; set; } = @"Textures\metal.png";
-        //        [XmlAttribute]
-        //        public string c3 { get; set; } = "0x858585";
-        //    }
-        //    public class Startbanner
-        //    {
-        //        [XmlAttribute]
-        //        public string z { get; set; } = "0";
-        //        [XmlAttribute]
-        //        public string text { get; set; } = "DEFAULT";
-        //        [XmlAttribute]
-        //        public string textsize { get; set; } = "0.1";
-        //    }
-        //    public class Frame
-        //    {
-        //        [XmlAttribute]
-        //        public string bh { get; set; } = "2.0";
-        //        [XmlAttribute]
-        //        public string snow { get; set; } = "true";
-        //        [XmlAttribute]
-        //        public string t { get; set; } = @"Textures\concrete5.png";
-        //        [XmlAttribute]
-        //        public string m { get; set; } = @"Materials\material1.xml";
-        //        [XmlAttribute]
-        //        public string c0 { get; set; } = "0x97a594";
-        //        [XmlAttribute]
-        //        public string c1 { get; set; } = "0xB2ABA0";
-        //        [XmlAttribute]
-        //        public string c { get; set; } = "0x504941";
-        //        [XmlAttribute]
-        //        public string c2 { get; set; } = "0xB2ABA0";
-        //    }
-        //    public class Flag
-        //    {
-        //        [XmlAttribute]
-        //        public string x { get; set; } = "12.5";
-        //        [XmlAttribute]
-        //        public string z { get; set; } = "4.55";
-        //        [XmlAttribute]
-        //        public string hf { get; set; } = "1.4";
-        //        [XmlAttribute]
-        //        public string pf { get; set; } = "1.5";
-        //        [XmlAttribute]
-        //        public string hp { get; set; } = "19.0";
-        //        [XmlAttribute]
-        //        public string rb { get; set; } = "0.07";
-        //        [XmlAttribute]
-        //        public string rt { get; set; } = "0.05";
-        //        [XmlAttribute]
-        //        public string tf { get; set; } = @"Textures\wood1.png";
-        //        [XmlAttribute]
-        //        public string mp { get; set; } = @"Materials\material1.xml";
-        //        [XmlAttribute]
-        //        public string cp { get; set; } = "0xffffff";
-        //    }
-        //    public class Twigs
-        //    {
-        //        [XmlAttribute]
-        //        public string lz { get; set; } = "1.0";
-        //        [XmlAttribute]
-        //        public string rz { get; set; } = "-1.0";
-        //    }
-        //}
+        public class Inrun
+        {
+            public Profile profile { get; set; }
+            public Track track { get; set; }
+            public Guardrail guardrail { get; set; }
+            public Startgate startgate { get; set; }
+            public Startbanner startbanner { get; set; }
+            public Frame frame { get; set; }
+            public Flag flag { get; set; }
+            public Twigs twigs { get; set; }
+            public class Profile
+            {
+                [XmlAttribute]
+                public string e { get; set; } = "91.5";
+                [XmlAttribute]
+                public string es { get; set; } = "15";
+                [XmlAttribute]
+                public string t { get; set; } = "6.43";
+                [XmlAttribute]
+                public string gamma { get; set; } = "33.5";
+                [XmlAttribute]
+                public string alpha { get; set; } = "10.5";
+                [XmlAttribute]
+                public string r1 { get; set; } = "105";
+                [XmlAttribute]
+                public string s { get; set; } = "2.5";
+                [XmlAttribute]
+                public string b1 { get; set; } = "2.0";
+                [XmlAttribute]
+                public string z0 { get; set; } = "0.5";
+                [XmlAttribute]
+                public string l { get; set; } = "6.5";
+                [XmlAttribute]
+                public string f { get; set; } = "2.0";
+            }
+            public class Track
+            {
+                [XmlAttribute]
+                public string type { get; set; } = "ceramic";
+                [XmlAttribute]
+                public string snow { get; set; } = "false";
+            }
+            public class Guardrail
+            {
+                [XmlAttribute]
+                public string z1 { get; set; } = "-1.0";
+                [XmlAttribute]
+                public string z2 { get; set; } = "1.0";
+                [XmlAttribute]
+                public string x { get; set; } = "10";
+            }
+            public class Startgate
+            {
+                [XmlAttribute(AttributeName = "default")]
+                public string Default { get; set; } = "8";
+                [XmlAttribute]
+                public string max { get; set; } = "30";
+                [XmlAttribute]
+                public string step { get; set; } = "0.35";
+                [XmlAttribute]
+                public string wind { get; set; } = "2.4";
+                [XmlAttribute]
+                public string z1 { get; set; } = "-1.0";
+                [XmlAttribute]
+                public string z2 { get; set; } = "1.0";
+                [XmlAttribute]
+                public string pz1 { get; set; } = "-0.8";
+                [XmlAttribute]
+                public string pz2 { get; set; } = "0.8";
+                [XmlAttribute]
+                public string t1 { get; set; } = @"Textures\metal.png";
+                [XmlAttribute]
+                public string m1 { get; set; } = @"Materials\material1.xml";
+                [XmlAttribute]
+                public string c1 { get; set; } = "0xaaaaaa";
+                [XmlAttribute]
+                public string t2 { get; set; } = @"Textures\metal.png";
+                [XmlAttribute]
+                public string m2 { get; set; } = @"Materials\material1.xml";
+                [XmlAttribute]
+                public string c2 { get; set; } = "0x999999";
+                [XmlAttribute]
+                public string t3 { get; set; } = @"Textures\metal.png";
+                [XmlAttribute]
+                public string c3 { get; set; } = "0x858585";
+            }
+            public class Startbanner
+            {
+                [XmlAttribute]
+                public string z { get; set; } = "0";
+                [XmlAttribute]
+                public string text { get; set; } = "DEFAULT";
+                [XmlAttribute]
+                public string textsize { get; set; } = "0.1";
+            }
+            public class Frame
+            {
+                [XmlAttribute]
+                public string bh { get; set; } = "2.0";
+                [XmlAttribute]
+                public string snow { get; set; } = "true";
+                [XmlAttribute]
+                public string t { get; set; } = @"Textures\concrete5.png";
+                [XmlAttribute]
+                public string m { get; set; } = @"Materials\material1.xml";
+                [XmlAttribute]
+                public string c0 { get; set; } = "0x97a594";
+                [XmlAttribute]
+                public string c1 { get; set; } = "0xB2ABA0";
+                [XmlAttribute]
+                public string c { get; set; } = "0x504941";
+                [XmlAttribute]
+                public string c2 { get; set; } = "0xB2ABA0";
+            }
+            public class Flag
+            {
+                [XmlAttribute]
+                public string x { get; set; } = "12.5";
+                [XmlAttribute]
+                public string z { get; set; } = "4.55";
+                [XmlAttribute]
+                public string hf { get; set; } = "1.4";
+                [XmlAttribute]
+                public string pf { get; set; } = "1.5";
+                [XmlAttribute]
+                public string hp { get; set; } = "19.0";
+                [XmlAttribute]
+                public string rb { get; set; } = "0.07";
+                [XmlAttribute]
+                public string rt { get; set; } = "0.05";
+                [XmlAttribute]
+                public string tf { get; set; } = @"Textures\wood1.png";
+                [XmlAttribute]
+                public string mp { get; set; } = @"Materials\material1.xml";
+                [XmlAttribute]
+                public string cp { get; set; } = "0xffffff";
+            }
+            public class Twigs
+            {
+                [XmlAttribute]
+                public string lz { get; set; } = "1.0";
+                [XmlAttribute]
+                public string rz { get; set; } = "-1.0";
+            }
+        }
         public class Dhill
         {
             public Profile profile { get; set; }
@@ -349,7 +349,7 @@ namespace HillEditor.Models
             }
             public class Lines
             {
-                [XmlAttribute(AttributeName ="summer-min")]
+                [XmlAttribute(AttributeName = "summer-min")]
                 public string summermin { get; set; } = "105";
                 [XmlAttribute(AttributeName = "summer-max")]
                 public string summermax { get; set; } = "145";
@@ -366,39 +366,39 @@ namespace HillEditor.Models
                 public string max { get; set; } = "140";
             }
         }
-        //public class Profile
-        //{
-        //    public Start start { get; set; }
-        //    public Line line { get; set; }
+        public class Profile
+        {
+            public Start start { get; set; }
+            public Line line { get; set; }
 
-        //    [XmlAttribute]
-        //    public string id { get; set; } = "inrun-right";
-        //    [XmlAttribute]
-        //    public string side { get; set; } = "right";
-        //    [XmlAttribute]
-        //    public string maxstep { get; set; } = "1000";
-        //    public class Start
-        //    {
-        //        [XmlAttribute]
-        //        public string x { get; set; } = "-10";
-        //        [XmlAttribute]
-        //        public string y { get; set; } = "-1.0";
-        //        [XmlAttribute]
-        //        public string refx { get; set; } = "inrun";
-        //    }
-        //    public class Line
-        //    {
-        //        [XmlAttribute]
-        //        public string x { get; set; } = "0";
-        //        [XmlAttribute]
-        //        public string y { get; set; } = "-1.0";
-        //        [XmlAttribute]
-        //        public string refx { get; set; } = "dhill";
-        //    }
-        //}
+            [XmlAttribute]
+            public string id { get; set; } = "inrun-right";
+            [XmlAttribute]
+            public string side { get; set; } = "right";
+            [XmlAttribute]
+            public string maxstep { get; set; } = "1000";
+            public class Start
+            {
+                [XmlAttribute]
+                public string x { get; set; } = "-10";
+                [XmlAttribute]
+                public string y { get; set; } = "-1.0";
+                [XmlAttribute]
+                public string refx { get; set; } = "inrun";
+            }
+            public class Line
+            {
+                [XmlAttribute]
+                public string x { get; set; } = "0";
+                [XmlAttribute]
+                public string y { get; set; } = "-1.0";
+                [XmlAttribute]
+                public string refx { get; set; } = "dhill";
+            }
+        }
         public class Terrain
         {
-            //public Profile profile { get; set; }
+            public Profile profile { get; set; }
             public Trees trees { get; set; }
             public Blocks blocks { get; set; }
             public Houses houses { get; set; }
