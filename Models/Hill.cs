@@ -20,6 +20,7 @@ namespace HillEditor.Models
         public Dhill dhill { get; set; }
         public Profile profile { get; set; }
         public Terrain terrain { get; set; }
+        public Pillar pillar { get; set; }
 
 
         public class Location
@@ -224,11 +225,11 @@ namespace HillEditor.Models
                 public string l2 { get; set; } = "13.38";
                 [XmlAttribute]
                 public string a { get; set; } = "87.5";
-                [XmlAttribute]
+                [XmlAttribute(AttributeName = "beta-p")]
                 public string betap { get; set; } = "37.7";
                 [XmlAttribute]
                 public string beta { get; set; } = "34.7";
-                [XmlAttribute]
+                [XmlAttribute(AttributeName = "beta-l")]
                 public string betal { get; set; } = "32.2";
                 [XmlAttribute]
                 public string rl { get; set; } = "306.15";
@@ -507,6 +508,29 @@ namespace HillEditor.Models
                 [XmlAttribute]
                 public string seed { get; set; } = "4135";
             }
+        }
+        public class Pillar
+        {
+            [XmlAttribute]
+            public string brefy { get; set; } = "terrain";
+            [XmlAttribute]
+            public string trefy { get; set; } = "inrun-top";
+            [XmlAttribute]
+            public string t { get; set; } = @"Textures\railing-glass.png";
+            [XmlAttribute]
+            public string m { get; set; } = @"Materials\material1.xml";
+            [XmlAttribute]
+            public string c { get; set; } = "0xf2e5c7";
+            [XmlAttribute]
+            public string x1 { get; set; } = "0";
+            [XmlAttribute]
+            public string x2 { get; set; } = "3";
+            [XmlAttribute]
+            public string refrz { get; set; } = "inrun-right";
+            [XmlAttribute]
+            public string reflz { get; set; } = "inrun-left";
+            [XmlAttribute]
+            public string top { get; set; } = "false";
         }
 
         public void Save(string fileName)
