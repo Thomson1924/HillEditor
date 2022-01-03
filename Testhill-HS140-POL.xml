@@ -2,7 +2,7 @@
 	<location latitude="49.1976" longitude="20.0712" orientation="245" timezone="2" altitude="1300" />
 	<weather pollution="0.0" firstsnow="300" lastsnow="90" maxsnow="1.5" precipitationprobability="0.1" fogprobability="0.1" />
 	<inrun>
-		<profile e="91.5" es="15" t="6.43" gamma="33.5" alpha="10.5" r1="105" s="2.5" b1="2.0" z0="0,5" l="6.5" f="3.0" />
+		<profile e="91.5" es="15" t="6.43" gamma="33.5" alpha="10.5" r1="105" s="2.5" b1="2.0" z0="0.5" l="6.5" f="3.0" />
 		<track type="ceramic" snow="false"/>
 		<guardrail z1="-1.0" z2="1.0" x="10" />
 		<startgate default="8" max="30" step="0.35" wind="2.4" z1="-1.0" z2="1.0" pz1="-0.8" pz2="0.8" t1="Textures\metal.png" m1="Materials\material1.xml" c1="0xaaaaaa" t2="Textures\metal.png" m2="Materials\material1.xml" c2="0x999999" t3="Textures\metal.png" m3="Materials\material1.xml" c3="0x858585" />

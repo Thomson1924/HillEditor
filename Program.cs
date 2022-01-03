@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
-using HillEditor.Modele_xD;
+using HillEditor.Models;
 
 namespace HillEditor
 {
@@ -13,56 +13,53 @@ namespace HillEditor
     {
         static void Main(string[] args)
         {
-            XmlDocument newhill = new XmlDocument();
-            newhill.Load("Testhill-HS140-POL.xml");
+            Hill hill = new Hill();
+            hill.location = new Hill.Location();
+            hill.weather = new Hill.Weather();
+            //hill.inrun = new Hill.Inrun();
+            //hill.inrun.profile = new Hill.Inrun.Profile();
+            //hill.inrun.track = new Hill.Inrun.Track();
+            //hill.inrun.guardrail = new Hill.Inrun.Guardrail();
+            //hill.inrun.startgate = new Hill.Inrun.Startgate();
+            //hill.inrun.startbanner = new Hill.Inrun.Startbanner();
+            //hill.inrun.frame = new Hill.Inrun.Frame();
+            //hill.inrun.flag = new Hill.Inrun.Flag();
+            //hill.inrun.twigs = new Hill.Inrun.Twigs();
+            hill.dhill = new Hill.Dhill();
+            hill.dhill.profile = new Hill.Dhill.Profile();
+            hill.dhill.fence = new Hill.Dhill.Fence();
+            hill.dhill.judgetower = new Hill.Dhill.Judgetower();
+            hill.dhill.windflags = new Hill.Dhill.Windflags();
+            hill.dhill.measurers = new Hill.Dhill.Measurers();
+            hill.dhill.label = new Hill.Dhill.Label();
+            hill.dhill.plastic = new Hill.Dhill.Plastic();
+            hill.dhill.lines = new Hill.Dhill.Lines();
+            hill.dhill.numbers = new Hill.Dhill.Numbers();
+            //hill.profile = new Hill.Profile();
+            //hill.profile.start = new Hill.Profile.Start();
+            //hill.profile.line = new Hill.Profile.Line();
+            hill.terrain = new Hill.Terrain();
+            //hill.terrain.profile = new Hill.Terrain.Profile();
+            hill.terrain.trees = new Hill.Terrain.Trees();
+            hill.terrain.blocks = new Hill.Terrain.Blocks();
+            hill.terrain.houses = new Hill.Terrain.Houses();
+            hill.terrain.audience = new Hill.Terrain.Audience();
 
-            var test = newhill.DocumentElement.SelectSingleNode("/hill/inrun");
-            var a = test.FirstChild;
+            hill.version = "DSJ4-1.8.0";
+            //hill.location.latitude = "49.1976";
+            //hill.location.longitude = "49.1976";
+            //hill.location.orientation = "245";
+            hill.location.timezone = "2";
+            hill.location.altitude = "1300";
+            hill.weather.firstsnow = "300";
+            hill.weather.lastsnow = "90";
+            hill.weather.maxsnow = "1.5";
+            hill.weather.precipitationprobability = "0.1";
+            hill.weather.fogprobability = "0.1";
+            hill.weather.pollution = "0.0";
+            hill.Save("createdhill.xml");
 
-            BasicHillEditor(newhill);
-            newhill.PreserveWhitespace = true;
-            //Lista którą podaje user(czyli np. cały ten inpuyt UserFromCreateSkocznias)
-            List<string> lista = new List<string> {
-                new string ("100"),
-                new string ("100"),
-                new string ("100"),
-                new string ("100"),
-                new string ("100"),
-                new string ("100"),
-                new string ("100"),
-                new string ("100"),
-                new string ("100"),
-                new string ("100"),
-                new string ("100")
-            };
-
-            SetdokumentxD(a, lista);
-
-            SaveDocPleaseWchuj(newhill,"AleSeSkacze2","ITam","ATHXD");
         }
-        static void BasicHillEditor(XmlDocument hill)
-        {
-            XmlElement root = hill.DocumentElement;
-            root.SetAttribute("version", "DSJ4-1.8.0");
 
-        }
-
-        static void SetdokumentxD(XmlNode node, List<string> zmiany)
-        {
-            for (int i = 0; i < zmiany.Count; i++)
-            {
-                node.Attributes[i].Value = zmiany.ElementAt(i);
-                //Console.WriteLine(node.Attributes[i].InnerText); 
-            }
-        }
-        static void SaveDocPleaseWchuj(XmlDocument doc,string nazwaSkoczni,string Costam,string Narodowosc)
-        {
-            string path = String.Format(@"{0}-{1}-{2}.xml",nazwaSkoczni,Costam,Narodowosc);
-            XmlSerializer writer = new XmlSerializer(typeof(XmlDocument));
-            using (FileStream file = File.Create(path))
-            {
-                writer.Serialize(file, doc);
-            }
-        }
     }
 }
