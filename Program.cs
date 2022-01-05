@@ -35,16 +35,26 @@ namespace HillEditor
             hill.dhill.plastic = new Hill.Dhill.Plastic();
             hill.dhill.lines = new Hill.Dhill.Lines();
             hill.dhill.numbers = new Hill.Dhill.Numbers();
-            hill.profile = new Hill.RightProfile();
-            hill.profile.start = new Hill.RightProfile.Start();
-            hill.profile.line = new Hill.RightProfile.Line();
+            hill.rightprofile = new Hill.RightProfile();
+            hill.rightprofile.start = new Hill.RightProfile.StartRight();
+            hill.rightprofile.line = new Hill.RightProfile.LineRight();
+            hill.profile = new Hill.LeftProfile();
+            hill.profile.start = new Hill.LeftProfile.StartLeft();
+            hill.profile.line = new Hill.LeftProfile.LineLeft();
             hill.terrain = new Hill.Terrain();
             hill.terrain.profile = new Hill.Terrain.TerrainProfile();
             hill.terrain.trees = new Hill.Terrain.Trees();
             hill.terrain.blocks = new Hill.Terrain.Blocks();
             hill.terrain.houses = new Hill.Terrain.Houses();
             hill.terrain.audience = new Hill.Terrain.Audience();
-            
+            hill.railingInrun = new Hill.RailingInrun();
+            hill.leftStairs = new Hill.LeftStairs();
+            hill.rightStairs = new Hill.RightStairs();
+            hill.railingLeft = new Hill.RailingLeft();
+            hill.railingRight = new Hill.RailingRight();
+            hill.pillar = new Hill.Pillar();
+           
+                        
             
             hill.version = "DSJ4-1.8.0";
             hill.location.latitude = "49.1976";
