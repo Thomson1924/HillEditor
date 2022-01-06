@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 using HillEditor.Models;
+using static HillEditor.Models.Hill;
 
 namespace HillEditor
 {
@@ -35,23 +36,61 @@ namespace HillEditor
             hill.dhill.plastic = new Hill.Dhill.Plastic();
             hill.dhill.lines = new Hill.Dhill.Lines();
             hill.dhill.numbers = new Hill.Dhill.Numbers();
-            hill.rightprofile = new Hill.RightProfile();
-            hill.rightprofile.start = new Hill.RightProfile.StartRight();
-            hill.rightprofile.line = new Hill.RightProfile.LineRight();
-            hill.leftprofile = new Hill.LeftProfile();
-            hill.leftprofile.start = new Hill.LeftProfile.StartLeft();
-            hill.leftprofile.line = new Hill.LeftProfile.LineLeft();
+            //hill.rightprofile = new Hill.RightProfile();
+            //hill.rightprofile.start = new Hill.RightProfile.StartRight();
+            //hill.rightprofile.line = new Hill.RightProfile.LineRight();
+
             hill.terrain = new Hill.Terrain();
             hill.terrain.profile = new Hill.Terrain.TerrainProfile();
             hill.terrain.trees = new Hill.Terrain.Trees();
             hill.terrain.blocks = new Hill.Terrain.Blocks();
             hill.terrain.houses = new Hill.Terrain.Houses();
             hill.terrain.audience = new Hill.Terrain.Audience();
-            hill.railingInrun = new Hill.RailingInrun();
+            //hill.railingInrun = new Hill.RailingInrun();
             hill.leftStairs = new Hill.LeftStairs();
-            hill.rightStairs = new Hill.RightStairs();
-            hill.railingLeft = new Hill.RailingLeft();
-            hill.railingRight = new Hill.RailingRight();
+            //hill.rightStairs = new Hill.RightStairs();
+            //hill.railingLeft = new Hill.RailingLeft();
+            //hill.railingRight = new Hill.RailingRight();
+            hill.railings = new List<Railing>();
+            hill.railings.Add(new Railing{
+                c = "1",
+                c3 = "1",
+                c6 = "1",
+                h = "1",
+                m = "1",
+                m3 = "1",
+                m6 = "1",
+                refx1 = null,
+                t = "1",
+                refx2 = "1",
+                t3 = "1",
+                t6 = "1",
+                type = "1",
+                w = "1",
+                z1 = "1",
+                z2 = null,
+                guard = null,
+            });
+            hill.railings.Add(new Railing
+            {
+                c = "1",
+                c3 = "2",
+                c6 = "3",
+                h = "4",
+                m = "5",
+                m3 = "6",
+                m6 = "7",
+                refx1 = "3",
+                t = "2",
+                refx2 = "612",
+                t3 = "123",
+                t6 = "123",
+                type = "123",
+                w = "",
+                z1 = "z1",
+                z2 = "z3",
+                guard= "ELO"
+            });
             hill.pillar = new Hill.Pillar();
            
                         

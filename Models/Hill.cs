@@ -18,20 +18,23 @@ namespace HillEditor.Models
         public Weather weather { get; set; }
         public Inrun inrun { get; set; }
         public Dhill dhill { get; set; }
-        [XmlElement(ElementName ="profile")]
-        public RightProfile rightprofile { get; set; }
         [XmlElement(ElementName = "profile")]
-        public LeftProfile leftprofile { get; set; }
-        [XmlElement(ElementName ="railing")]
-        public RailingInrun railingInrun { get; set; }
+        public RightProfile rightprofile { get; set; }
+        //[XmlElement(ElementName = "profile")]
+        //public LeftProfile leftprofile { get; set; }
+        //[XmlElement(ElementName ="railing")]
+        //public RailingInrun railingInrun { get; set; }
         [XmlElement(ElementName ="stairs")]
         public LeftStairs leftStairs { get; set; }
-        [XmlElement(ElementName = "stairs")]
-        public RightStairs rightStairs { get; set; }
-        [XmlElement(ElementName = "railing")]
-        public RailingLeft railingLeft { get; set; }
-        [XmlElement(ElementName = "railing")]
-        public RailingRight railingRight { get; set; }
+
+        //[XmlElement(ElementName = "stairs")]
+        //public RightStairs rightStairs { get; set; }
+        //[XmlElement(ElementName = "railing")]
+        //public RailingLeft railingLeft { get; set; }
+        //[XmlElement(ElementName = "railing")]
+        //public RailingRight railingRight { get; set; }
+        [XmlElement("railing")]
+        public List<Railing> railings { get; set; }
         public Terrain terrain { get; set; }
         public Pillar pillar { get; set; }
 
@@ -65,7 +68,41 @@ namespace HillEditor.Models
             [XmlAttribute]
             public string fogprobability { get; set; } = "0.1";
         }
-
+        //public class Railing
+        //{
+        //    [XmlAttribute]
+        //    public string refx1 { get; set; } = "inrun";
+        //    [XmlAttribute]
+        //    public string refx2 { get; set; } = "dhill";
+        //    [XmlAttribute]
+        //    public string type { get; set; } = "glass";
+        //    [XmlAttribute]
+        //    public string h { get; set; } = "1";
+        //    [XmlAttribute]
+        //    public string w { get; set; } = "0.1";
+        //    [XmlAttribute]
+        //    public string z1 { get; set; } = "2";
+        //    [XmlAttribute]
+        //    public string z2 { get; set; } = "2";
+        //    [XmlAttribute]
+        //    public string t { get; set; } = @"Textures\railing-glass.png";
+        //    [XmlAttribute]
+        //    public string m { get; set; } = @"Materials\window.xml";
+        //    [XmlAttribute]
+        //    public string c { get; set; } = "0xffffffff";
+        //    [XmlAttribute]
+        //    public string t3 { get; set; } = @"Textures\railing-glass-cut.png";
+        //    [XmlAttribute]
+        //    public string m3 { get; set; } = @"Materials\window.xml";
+        //    [XmlAttribute]
+        //    public string c3 { get; set; } = "0xffffffff";
+        //    [XmlAttribute]
+        //    public string t6 { get; set; } = @"Textures\railing-glass-cut.png";
+        //    [XmlAttribute]
+        //    public string m6 { get; set; } = @"Materials\window.xml";
+        //    [XmlAttribute]
+        //    public string c6 { get; set; } = "0xffffffff";
+        //}
         public class Inrun
         {
             public InrunProfile profile { get; set; }
@@ -665,7 +702,7 @@ namespace HillEditor.Models
             public string c6 { get; set; } = "0xffffffff";
         }
 
-        public class RailingRight
+        public class Railing
         {
             [XmlAttribute]
             public string refx1 { get; set; } = "inrun";
@@ -736,7 +773,8 @@ namespace HillEditor.Models
             XmlWriterSettings settings = new XmlWriterSettings
             {
                 Indent = true,
-                OmitXmlDeclaration = true
+                OmitXmlDeclaration = true,
+                
             };
 
             using (XmlWriter xmlWriter = XmlWriter.Create(fileName, settings))
