@@ -20,8 +20,8 @@ namespace HillEditor.Models
         public Dhill dhill { get; set; }
         [XmlElement(ElementName ="profile")]
         public RightProfile rightprofile { get; set; }
-        
-        public LeftProfile profile { get; set; }
+        [XmlElement(ElementName = "profile")]
+        public LeftProfile leftprofile { get; set; }
         [XmlElement(ElementName ="railing")]
         public RailingInrun railingInrun { get; set; }
         [XmlElement(ElementName ="stairs")]

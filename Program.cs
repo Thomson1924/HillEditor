@@ -38,9 +38,9 @@ namespace HillEditor
             hill.rightprofile = new Hill.RightProfile();
             hill.rightprofile.start = new Hill.RightProfile.StartRight();
             hill.rightprofile.line = new Hill.RightProfile.LineRight();
-            hill.profile = new Hill.LeftProfile();
-            hill.profile.start = new Hill.LeftProfile.StartLeft();
-            hill.profile.line = new Hill.LeftProfile.LineLeft();
+            hill.leftprofile = new Hill.LeftProfile();
+            hill.leftprofile.start = new Hill.LeftProfile.StartLeft();
+            hill.leftprofile.line = new Hill.LeftProfile.LineLeft();
             hill.terrain = new Hill.Terrain();
             hill.terrain.profile = new Hill.Terrain.TerrainProfile();
             hill.terrain.trees = new Hill.Terrain.Trees();
