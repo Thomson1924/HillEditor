@@ -47,66 +47,99 @@ namespace HillEditor
             hill.terrain.houses = new Hill.Terrain.Houses();
             hill.terrain.audience = new Hill.Terrain.Audience();
             //hill.railingInrun = new Hill.RailingInrun();
-            hill.leftStairs = new Hill.LeftStairs();
+            //hill.leftStairs = new Hill.LeftStairs();
             //hill.rightStairs = new Hill.RightStairs();
             //hill.railingLeft = new Hill.RailingLeft();
             //hill.railingRight = new Hill.RailingRight();
+            
+            
             hill.railings = new List<Railing>();
             hill.railings.Add(new Railing{
-                c = "1",
-                c3 = "1",
-                c6 = "1",
-                h = "1",
-                m = "1",
-                m3 = "1",
-                m6 = "1",
-                refx1 = null,
-                t = "1",
-                refx2 = "1",
-                t3 = "1",
-                t6 = "1",
-                type = "1",
-                w = "1",
-                z1 = "1",
-                z2 = null,
-                guard = null,
+                t = @"Textures\railing-glass.png",
+                y="-2.1",
+                c= "0xf2e5c7",
+                m = @"Materials\material1.xml",
+                h = "2.0",
+                refx1 = "inrun",
+                refx2 = "dhill",
+                w = "4.0"
             });
             hill.railings.Add(new Railing
             {
-                c = "1",
-                c3 = "2",
-                c6 = "3",
-                h = "4",
-                m = "5",
-                m3 = "6",
-                m6 = "7",
-                refx1 = "3",
-                t = "2",
-                refx2 = "612",
-                t3 = "123",
-                t6 = "123",
-                type = "123",
-                w = "",
-                z1 = "z1",
-                z2 = "z3",
-                guard= "ELO"
+                refx1 = "inrun",
+                refx2 = "dhill",
+                type = "glass",
+                h = "1",
+                w = "0.1",
+                z1 = "2",
+                z2 = "2",
+                t = @"Textures\railing-glass.png",
+                m = @"Materials\window.xml",
+                c = "0xffffffff", 
+                t3 = @"Textures\railing-glass-cut.png",
+                m3 = @"Materials\window.xml",
+                c3 = "0xffffffff",
+                t6 = @"Textures\railing-glass-cut.png",
+                m6 = @"Materials\window.xml",
+                c6 = "0xffffffff"
             });
+            hill.railings.Add(new Railing
+            {
+                refx1 = "inrun",
+                refx2 = "dhill",
+                guard = "false",
+                type = "glass",
+                h = "1",
+                w = "0.1",
+                z1 = "-2",
+                z2 = "-2",
+                t = @"Textures\railing-glass.png",
+                m = @"Materials\window.xml",
+                c = "0xffffffff",
+                t3 = @"Textures\railing-glass-cut.png",
+                m3 = @"Materials\window.xml",
+                c3 = "0xffffffff",
+                t6 = @"Textures\railing-glass-cut.png",
+                m6 = @"Materials\window.xml",
+                c6 = "0xffffffff"
+            });
+
+            hill.stairs = new List<Stairs>();
+            hill.stairs.Add(new Stairs { });
+            hill.stairs.Add(new Stairs
+            {
+                lz="-1",
+                rz="-2",
+            });
+                                 
             hill.pillar = new Hill.Pillar();
-           
-                        
-            
-            hill.version = "DSJ4-1.8.0";
-            hill.location.latitude = "49.1976";
-            hill.location.longitude = "49.1976";
-            hill.location.orientation = "245";
-            hill.location.timezone = "2";
-            hill.location.altitude = "1300";
-            hill.weather.firstsnow = "300";
-            hill.weather.lastsnow = "90";
-            hill.weather.maxsnow = "1.5";
-            hill.weather.precipitationprobability = "0.1";
-            hill.weather.fogprobability = "0.1";
-            hill.weather.pollution = "0.0";
+
+            hill.profile = new List<Profile>();
+            hill.profile.Add(new Profile 
+            { 
+                start = new Profile.Start(), 
+                line = new Profile.Line(),
+            });
+            hill.profile.Add(new Profile
+            {
+                id = "inrun-left",
+                start = new Profile.Start { y = "1.0" },
+                line = new Profile.Line { y = "1.0" }
+
+            });
+            //hill.profile.ElementAt(1)
+            //hill.version = "DSJ4-1.8.0";
+            //hill.location.latitude = "49.1976";
+            //hill.location.longitude = "49.1976";
+            //hill.location.orientation = "245";
+            //hill.location.timezone = "2";
+            //hill.location.altitude = "1300";
+            //hill.weather.firstsnow = "300";
+            //hill.weather.lastsnow = "90";
+            //hill.weather.maxsnow = "1.5";
+            //hill.weather.precipitationprobability = "0.1";
+            //hill.weather.fogprobability = "0.1";
+            //hill.weather.pollution = "0.0";
             hill.Save("createdhill.xml");
 
         }

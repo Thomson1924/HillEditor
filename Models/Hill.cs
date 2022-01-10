@@ -19,13 +19,14 @@ namespace HillEditor.Models
         public Inrun inrun { get; set; }
         public Dhill dhill { get; set; }
         [XmlElement(ElementName = "profile")]
-        public RightProfile rightprofile { get; set; }
+        public List<Profile> profile { get; set; }
+        public Terrain terrain { get; set; }
         //[XmlElement(ElementName = "profile")]
         //public LeftProfile leftprofile { get; set; }
         //[XmlElement(ElementName ="railing")]
         //public RailingInrun railingInrun { get; set; }
-        [XmlElement(ElementName ="stairs")]
-        public LeftStairs leftStairs { get; set; }
+        [XmlElement(ElementName = "stairs")]
+        public List<Stairs> stairs { get; set; }
 
         //[XmlElement(ElementName = "stairs")]
         //public RightStairs rightStairs { get; set; }
@@ -35,7 +36,7 @@ namespace HillEditor.Models
         //public RailingRight railingRight { get; set; }
         [XmlElement("railing")]
         public List<Railing> railings { get; set; }
-        public Terrain terrain { get; set; }
+        
         public Pillar pillar { get; set; }
 
 
@@ -421,10 +422,10 @@ namespace HillEditor.Models
                 public string max { get; set; } = "140";
             }
         }
-        public class RightProfile
+        public class Profile
         {
-            public StartRight start { get; set; }
-            public LineRight line { get; set; }
+            public Start start { get; set; }
+            public Line line { get; set; }
 
             [XmlAttribute]
             public string id { get; set; } = "inrun-right";
@@ -432,7 +433,7 @@ namespace HillEditor.Models
             public string side { get; set; } = "right";
             [XmlAttribute]
             public string maxstep { get; set; } = "1000";
-            public class StartRight
+            public class Start
             {
                 [XmlAttribute]
                 public string x { get; set; } = "-10";
@@ -441,7 +442,7 @@ namespace HillEditor.Models
                 [XmlAttribute]
                 public string refx { get; set; } = "inrun";
             }
-            public class LineRight
+            public class Line
             {
                 [XmlAttribute]
                 public string x { get; set; } = "0";
@@ -451,36 +452,36 @@ namespace HillEditor.Models
                 public string refx { get; set; } = "dhill";
             }
         }
-        public class LeftProfile
-        {
-            public StartLeft start { get; set; }
-            public LineLeft line { get; set; }
+        //public class LeftProfile
+        //{
+        //    public StartLeft start { get; set; }
+        //    public LineLeft line { get; set; }
 
-            [XmlAttribute]
-            public string id { get; set; } = "inrun-left";
-            [XmlAttribute]
-            public string side { get; set; } = "left";
-            [XmlAttribute]
-            public string maxstep { get; set; } = "1000";
-            public class StartLeft
-            {
-                [XmlAttribute]
-                public string x { get; set; } = "-10";
-                [XmlAttribute]
-                public string y { get; set; } = "1.0";
-                [XmlAttribute]
-                public string refx { get; set; } = "inrun";
-            }
-            public class LineLeft
-            {
-                [XmlAttribute]
-                public string x { get; set; } = "0";
-                [XmlAttribute]
-                public string y { get; set; } = "1.0";
-                [XmlAttribute]
-                public string refx { get; set; } = "dhill";
-            }
-        }
+        //    [XmlAttribute]
+        //    public string id { get; set; } = "inrun-left";
+        //    [XmlAttribute]
+        //    public string side { get; set; } = "left";
+        //    [XmlAttribute]
+        //    public string maxstep { get; set; } = "1000";
+        //    public class StartLeft
+        //    {
+        //        [XmlAttribute]
+        //        public string x { get; set; } = "-10";
+        //        [XmlAttribute]
+        //        public string y { get; set; } = "1.0";
+        //        [XmlAttribute]
+        //        public string refx { get; set; } = "inrun";
+        //    }
+        //    public class LineLeft
+        //    {
+        //        [XmlAttribute]
+        //        public string x { get; set; } = "0";
+        //        [XmlAttribute]
+        //        public string y { get; set; } = "1.0";
+        //        [XmlAttribute]
+        //        public string refx { get; set; } = "dhill";
+        //    }
+        //}
         public class Terrain
         {
             public TerrainProfile profile { get; set; }
@@ -531,7 +532,7 @@ namespace HillEditor.Models
                 [XmlAttribute]
                 public string maxheight { get; set; } = "20";
                 [XmlAttribute]
-                public string fractalthreshold { get; set; } = "0,8";
+                public string fractalthreshold { get; set; } = "0.8";
                 [XmlAttribute]
                 public string maxaltitude { get; set; } = "1600";
                 [XmlAttribute]
@@ -592,55 +593,9 @@ namespace HillEditor.Models
                 [XmlAttribute]
                 public string seed { get; set; } = "4135";
             }
-        }
+        }        
 
-        public class RailingInrun
-        {
-            [XmlAttribute]
-            public string t { get; set; } = @"Textures\railing-glass.png";
-            [XmlAttribute]
-            public string y { get; set; } = "-2.002";
-            [XmlAttribute]
-            public string c { get; set; } = "0xf2e5c7";
-            [XmlAttribute]
-            public string m { get; set; } = @"Materials\material1.xml";
-            [XmlAttribute]
-            public string h { get; set; } = "2.0";
-            [XmlAttribute]
-            public string refx1 { get; set; } = "inrun";
-            [XmlAttribute]
-            public string refx2 { get; set; } = "dhill";
-            [XmlAttribute]
-            public string w { get; set; } = "4.0";
-        }
-
-        public class LeftStairs
-        {
-            [XmlAttribute]
-            public string refx { get; set; } = "inrun";
-            [XmlAttribute]
-            public string lz { get; set; } = "-1";
-            [XmlAttribute]
-            public string rz { get; set; } = "-2";
-            [XmlAttribute]
-            public string c2 { get; set; } = "0xe8ebea";
-            [XmlAttribute]
-            public string m2 { get; set; } = @"Materials\material1.xml";
-            [XmlAttribute]
-            public string t2 { get; set; } = @"Textures\railing-glass.png";
-            [XmlAttribute]
-            public string c1 { get; set; } = "0xf2e5c7";
-            [XmlAttribute]
-            public string m1 { get; set; } = @"Materials\material1.xml";
-            [XmlAttribute]
-            public string t1 { get; set; } = @"Textures\rubbermat.png";
-            [XmlAttribute]
-            public string x1 { get; set; } = "0";
-            [XmlAttribute]
-            public string x2 { get; set; } = "20";
-        }
-
-        public class RightStairs
+        public class Stairs
         {
             [XmlAttribute]
             public string refx { get; set; } = "inrun";
@@ -666,78 +621,45 @@ namespace HillEditor.Models
             public string x2 { get; set; } = "20";
         }
 
-        public class RailingLeft
-        {
-            [XmlAttribute]
-            public string refx1 { get; set; } = "inrun";
-            [XmlAttribute]
-            public string refx2 { get; set; } = "dhill";
-            [XmlAttribute]
-            public string type { get; set; } = "glass";
-            [XmlAttribute]
-            public string h { get; set; } = "1";
-            [XmlAttribute]
-            public string w { get; set; } = "0.1";
-            [XmlAttribute]
-            public string z1 { get; set; } = "2";
-            [XmlAttribute]
-            public string z2 { get; set; } = "2";
-            [XmlAttribute]
-            public string t { get; set; } = @"Textures\railing-glass.png";
-            [XmlAttribute]
-            public string m { get; set; } = @"Materials\window.xml";
-            [XmlAttribute]
-            public string c { get; set; } = "0xffffffff";
-            [XmlAttribute]
-            public string t3 { get; set; } = @"Textures\railing-glass-cut.png";
-            [XmlAttribute]
-            public string m3 { get; set; } = @"Materials\window.xml";
-            [XmlAttribute]
-            public string c3 { get; set; } = "0xffffffff";
-            [XmlAttribute]
-            public string t6 { get; set; } = @"Textures\railing-glass-cut.png";
-            [XmlAttribute]
-            public string m6 { get; set; } = @"Materials\window.xml";
-            [XmlAttribute]
-            public string c6 { get; set; } = "0xffffffff";
-        }
-
         public class Railing
         {
             [XmlAttribute]
-            public string refx1 { get; set; } = "inrun";
+            public string refx1 { get; set; }
             [XmlAttribute]
-            public string refx2 { get; set; } = "dhill";
+            public string refx2 { get; set; }
             [XmlAttribute]
-            public string guard { get; set; } = "false";
+            public string guard { get; set; }
             [XmlAttribute]
-            public string type { get; set; } = "glass";
+            public string type { get; set; }
             [XmlAttribute]
-            public string h { get; set; } = "1";
+            public string h { get; set; }
             [XmlAttribute]
-            public string w { get; set; } = "0.1";
+            public string w { get; set; }
             [XmlAttribute]
-            public string z1 { get; set; } = "-2";
+            public string z1 { get; set; }
             [XmlAttribute]
-            public string z2 { get; set; } = "-2";
+            public string z2 { get; set; }
             [XmlAttribute]
-            public string t { get; set; } = @"Textures\railing-glass.png";
+            public string t { get; set; }
             [XmlAttribute]
-            public string m { get; set; } = @"Materials\window.xml";
+            public string m { get; set; }
             [XmlAttribute]
-            public string c { get; set; } = "0xffffffff";
+            public string c { get; set; }
             [XmlAttribute]
-            public string t3 { get; set; } = @"Textures\railing-glass-cut.png";
+            public string t3 { get; set; }
             [XmlAttribute]
-            public string m3 { get; set; } = @"Materials\window.xml";
+            public string m3 { get; set; }
             [XmlAttribute]
-            public string c3 { get; set; } = "0xffffffff";
+            public string c3 { get; set; }
             [XmlAttribute]
-            public string t6 { get; set; } = @"Textures\railing-glass-cut.png";
+            public string t6 { get; set; }
             [XmlAttribute]
-            public string m6 { get; set; } = @"Materials\window.xml";
+            public string m6 { get; set; }
             [XmlAttribute]
-            public string c6 { get; set; } = "0xffffffff";
+            public string c6 { get; set; }
+            [XmlAttribute]
+            public string y { get; set; }
+
         }
 
         public class Pillar
@@ -774,7 +696,7 @@ namespace HillEditor.Models
             {
                 Indent = true,
                 OmitXmlDeclaration = true,
-                
+
             };
 
             using (XmlWriter xmlWriter = XmlWriter.Create(fileName, settings))
