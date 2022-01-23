@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -18,21 +19,14 @@ namespace HillEditor.Models
         public Weather weather { get; set; }
         public Inrun inrun { get; set; }
         public Dhill dhill { get; set; }
-        [XmlElement(ElementName ="profile")]
-        public RightProfile rightprofile { get; set; }
         [XmlElement(ElementName = "profile")]
-        public LeftProfile leftprofile { get; set; }
-        [XmlElement(ElementName ="railing")]
-        public RailingInrun railingInrun { get; set; }
-        [XmlElement(ElementName ="stairs")]
-        public LeftStairs leftStairs { get; set; }
-        [XmlElement(ElementName = "stairs")]
-        public RightStairs rightStairs { get; set; }
-        [XmlElement(ElementName = "railing")]
-        public RailingLeft railingLeft { get; set; }
-        [XmlElement(ElementName = "railing")]
-        public RailingRight railingRight { get; set; }
+        public List<Profile> profile { get; set; }
         public Terrain terrain { get; set; }
+        [XmlElement(ElementName = "stairs")]
+        public List<Stairs> stairs { get; set; }
+        [XmlElement("railing")]
+        public List<Railing> railings { get; set; }
+
         public Pillar pillar { get; set; }
 
 
@@ -43,21 +37,21 @@ namespace HillEditor.Models
             [XmlAttribute]
             public string longitude { get; set; } = "20.0712";
             [XmlAttribute]
-            public string orientation { get; set; } = "245";
+            public string orientation { get; set; } = "245.0";
             [XmlAttribute]
-            public string timezone { get; set; } = "2";
+            public string timezone { get; set; } = "2.0";
             [XmlAttribute]
-            public string altitude { get; set; } = "1300";
+            public string altitude { get; set; } = "1300.0";
         }
 
         public class Weather
         {
             [XmlAttribute]
-            public string pollution { get; set; } = "0";
+            public string pollution { get; set; } = "0.0";
             [XmlAttribute]
-            public string firstsnow { get; set; } = "300";
+            public string firstsnow { get; set; } = "300.0";
             [XmlAttribute]
-            public string lastsnow { get; set; } = "90";
+            public string lastsnow { get; set; } = "90.0";
             [XmlAttribute]
             public string maxsnow { get; set; } = "1.5";
             [XmlAttribute]
@@ -65,7 +59,6 @@ namespace HillEditor.Models
             [XmlAttribute]
             public string fogprobability { get; set; } = "0.1";
         }
-
         public class Inrun
         {
             public InrunProfile profile { get; set; }
@@ -79,27 +72,27 @@ namespace HillEditor.Models
             public class InrunProfile
             {
                 [XmlAttribute]
-                public string e { get; set; } = "91.5";
+                public string e { get; set; } = "91,5";
                 [XmlAttribute]
-                public string es { get; set; } = "15";
+                public string es { get; set; } = "15,0";
                 [XmlAttribute]
                 public string t { get; set; } = "6.43";
                 [XmlAttribute]
-                public string gamma { get; set; } = "33.5";
+                public string gamma { get; set; } = "40.5";
                 [XmlAttribute]
-                public string alpha { get; set; } = "10.5";
+                public string alpha { get; set; } = "5.5";
                 [XmlAttribute]
-                public string r1 { get; set; } = "105";
+                public string r1 { get; set; } = "105,0";
                 [XmlAttribute]
-                public string s { get; set; } = "2.5";
+                public string s { get; set; } = "2,5";
                 [XmlAttribute]
-                public string b1 { get; set; } = "2.0";
+                public string b1 { get; set; } = "2,0";
                 [XmlAttribute]
-                public string z0 { get; set; } = "0.5";
+                public string z0 { get; set; } = "0,0";
                 [XmlAttribute]
-                public string l { get; set; } = "6.5";
+                public string l { get; set; } = "6,5";
                 [XmlAttribute]
-                public string f { get; set; } = "2.0";
+                public string f { get; set; } = "2,0";
             }
             public class Track
             {
@@ -115,7 +108,7 @@ namespace HillEditor.Models
                 [XmlAttribute]
                 public string z2 { get; set; } = "1.0";
                 [XmlAttribute]
-                public string x { get; set; } = "10";
+                public string x { get; set; } = "30";
             }
             public class Startgate
             {
@@ -164,7 +157,7 @@ namespace HillEditor.Models
             public class Frame
             {
                 [XmlAttribute]
-                public string bh { get; set; } = "2.0";
+                public string bh { get; set; } = "2,0";
                 [XmlAttribute]
                 public string snow { get; set; } = "true";
                 [XmlAttribute]
@@ -189,9 +182,9 @@ namespace HillEditor.Models
                 [XmlAttribute]
                 public string hf { get; set; } = "1.4";
                 [XmlAttribute]
-                public string pf { get; set; } = "1.5";
+                public string pf { get; set; } = "1.6153";
                 [XmlAttribute]
-                public string hp { get; set; } = "19.0";
+                public string hp { get; set; } = "15.0";
                 [XmlAttribute]
                 public string rb { get; set; } = "0.07";
                 [XmlAttribute]
@@ -233,15 +226,15 @@ namespace HillEditor.Models
                 [XmlAttribute]
                 public string alpha { get; set; } = "6.28";
                 [XmlAttribute]
-                public string h { get; set; } = "62.93";
+                public string h { get; set; } = "62,93";
                 [XmlAttribute]
-                public string n { get; set; } = "107.41";
+                public string n { get; set; } = "107,41";
                 [XmlAttribute]
-                public string l1 { get; set; } = "16.04";
+                public string l1 { get; set; } = "16,04";
                 [XmlAttribute]
-                public string l2 { get; set; } = "13.38";
+                public string l2 { get; set; } = "13,38";
                 [XmlAttribute]
-                public string a { get; set; } = "87.5";
+                public string a { get; set; } = "87,5";
                 [XmlAttribute(AttributeName = "beta-p")]
                 public string betap { get; set; } = "37.7";
                 [XmlAttribute]
@@ -249,13 +242,13 @@ namespace HillEditor.Models
                 [XmlAttribute(AttributeName = "beta-l")]
                 public string betal { get; set; } = "32.2";
                 [XmlAttribute]
-                public string rl { get; set; } = "306.15";
+                public string rl { get; set; } = "306,15";
                 [XmlAttribute]
-                public string r2 { get; set; } = "73.22";
+                public string r2 { get; set; } = "73,22";
                 [XmlAttribute]
-                public string b0 { get; set; } = "9.5";
+                public string b0 { get; set; } = "9,5";
                 [XmlAttribute]
-                public string bk { get; set; } = "23.37";
+                public string bk { get; set; } = "23,37";
                 [XmlAttribute]
                 public string ba { get; set; } = "25";
                 [XmlAttribute]
@@ -267,7 +260,7 @@ namespace HillEditor.Models
                 [XmlAttribute]
                 public string k { get; set; } = "120";
                 [XmlAttribute]
-                public string hs { get; set; } = "134";
+                public string hs { get; set; } = "140";
             }
             public class Fence
             {
@@ -303,6 +296,12 @@ namespace HillEditor.Models
             public class Lights
             {
                 [XmlAttribute]
+                public string x0 { get; set; } = "-100";
+                [XmlAttribute]
+                public string x1 { get; set; } = "210";
+                [XmlAttribute]
+                public string side { get; set; } = "left";
+                [XmlAttribute]
                 public string step { get; set; } = "60";
                 [XmlAttribute]
                 public string size { get; set; } = "3";
@@ -332,9 +331,9 @@ namespace HillEditor.Models
                 [XmlAttribute]
                 public string h { get; set; } = "4";
                 [XmlAttribute]
-                public string l { get; set; } = "4.1";
+                public string l { get; set; } = "4,1";
                 [XmlAttribute]
-                public string d { get; set; } = "0.6";
+                public string d { get; set; } = "0,6";
                 [XmlAttribute]
                 public string t { get; set; } = @"Textures\rust1.png";
                 [XmlAttribute]
@@ -345,9 +344,9 @@ namespace HillEditor.Models
             public class Measurers
             {
                 [XmlAttribute]
-                public string c1 { get; set; } = "0x578ad1";
+                public string c1 { get; set; } = "0xff0000";
                 [XmlAttribute]
-                public string c2 { get; set; } = "0xeeeeee";
+                public string c2 { get; set; } = "0xdddddd";
             }
             public class Label
             {
@@ -358,7 +357,7 @@ namespace HillEditor.Models
                 [XmlAttribute]
                 public string text { get; set; } = "DEFAULT";
                 [XmlAttribute]
-                public string textsize { get; set; } = "2.5";
+                public string textsize { get; set; } = "2,5";
             }
             public class Plastic
             {
@@ -384,10 +383,10 @@ namespace HillEditor.Models
                 public string max { get; set; } = "140";
             }
         }
-        public class RightProfile
+        public class Profile
         {
-            public StartRight start { get; set; }
-            public LineRight line { get; set; }
+            public Start start { get; set; }
+            public Line line { get; set; }
 
             [XmlAttribute]
             public string id { get; set; } = "inrun-right";
@@ -395,7 +394,7 @@ namespace HillEditor.Models
             public string side { get; set; } = "right";
             [XmlAttribute]
             public string maxstep { get; set; } = "1000";
-            public class StartRight
+            public class Start
             {
                 [XmlAttribute]
                 public string x { get; set; } = "-10";
@@ -404,42 +403,12 @@ namespace HillEditor.Models
                 [XmlAttribute]
                 public string refx { get; set; } = "inrun";
             }
-            public class LineRight
+            public class Line
             {
                 [XmlAttribute]
                 public string x { get; set; } = "0";
                 [XmlAttribute]
                 public string y { get; set; } = "-1.0";
-                [XmlAttribute]
-                public string refx { get; set; } = "dhill";
-            }
-        }
-        public class LeftProfile
-        {
-            public StartLeft start { get; set; }
-            public LineLeft line { get; set; }
-
-            [XmlAttribute]
-            public string id { get; set; } = "inrun-left";
-            [XmlAttribute]
-            public string side { get; set; } = "left";
-            [XmlAttribute]
-            public string maxstep { get; set; } = "1000";
-            public class StartLeft
-            {
-                [XmlAttribute]
-                public string x { get; set; } = "-10";
-                [XmlAttribute]
-                public string y { get; set; } = "1.0";
-                [XmlAttribute]
-                public string refx { get; set; } = "inrun";
-            }
-            public class LineLeft
-            {
-                [XmlAttribute]
-                public string x { get; set; } = "0";
-                [XmlAttribute]
-                public string y { get; set; } = "1.0";
                 [XmlAttribute]
                 public string refx { get; set; } = "dhill";
             }
@@ -494,7 +463,7 @@ namespace HillEditor.Models
                 [XmlAttribute]
                 public string maxheight { get; set; } = "20";
                 [XmlAttribute]
-                public string fractalthreshold { get; set; } = "0,8";
+                public string fractalthreshold { get; set; } = "0.8";
                 [XmlAttribute]
                 public string maxaltitude { get; set; } = "1600";
                 [XmlAttribute]
@@ -557,53 +526,7 @@ namespace HillEditor.Models
             }
         }
 
-        public class RailingInrun
-        {
-            [XmlAttribute]
-            public string t { get; set; } = @"Textures\railing-glass.png";
-            [XmlAttribute]
-            public string y { get; set; } = "-2.002";
-            [XmlAttribute]
-            public string c { get; set; } = "0xf2e5c7";
-            [XmlAttribute]
-            public string m { get; set; } = @"Materials\material1.xml";
-            [XmlAttribute]
-            public string h { get; set; } = "2.0";
-            [XmlAttribute]
-            public string refx1 { get; set; } = "inrun";
-            [XmlAttribute]
-            public string refx2 { get; set; } = "dhill";
-            [XmlAttribute]
-            public string w { get; set; } = "4.0";
-        }
-
-        public class LeftStairs
-        {
-            [XmlAttribute]
-            public string refx { get; set; } = "inrun";
-            [XmlAttribute]
-            public string lz { get; set; } = "-1";
-            [XmlAttribute]
-            public string rz { get; set; } = "-2";
-            [XmlAttribute]
-            public string c2 { get; set; } = "0xe8ebea";
-            [XmlAttribute]
-            public string m2 { get; set; } = @"Materials\material1.xml";
-            [XmlAttribute]
-            public string t2 { get; set; } = @"Textures\railing-glass.png";
-            [XmlAttribute]
-            public string c1 { get; set; } = "0xf2e5c7";
-            [XmlAttribute]
-            public string m1 { get; set; } = @"Materials\material1.xml";
-            [XmlAttribute]
-            public string t1 { get; set; } = @"Textures\rubbermat.png";
-            [XmlAttribute]
-            public string x1 { get; set; } = "0";
-            [XmlAttribute]
-            public string x2 { get; set; } = "20";
-        }
-
-        public class RightStairs
+        public class Stairs
         {
             [XmlAttribute]
             public string refx { get; set; } = "inrun";
@@ -629,78 +552,45 @@ namespace HillEditor.Models
             public string x2 { get; set; } = "20";
         }
 
-        public class RailingLeft
+        public class Railing
         {
             [XmlAttribute]
-            public string refx1 { get; set; } = "inrun";
+            public string refx1 { get; set; }
             [XmlAttribute]
-            public string refx2 { get; set; } = "dhill";
+            public string refx2 { get; set; }
             [XmlAttribute]
-            public string type { get; set; } = "glass";
+            public string guard { get; set; }
             [XmlAttribute]
-            public string h { get; set; } = "1";
+            public string type { get; set; }
             [XmlAttribute]
-            public string w { get; set; } = "0.1";
+            public string h { get; set; }
             [XmlAttribute]
-            public string z1 { get; set; } = "2";
+            public string w { get; set; }
             [XmlAttribute]
-            public string z2 { get; set; } = "2";
+            public string z1 { get; set; }
             [XmlAttribute]
-            public string t { get; set; } = @"Textures\railing-glass.png";
+            public string z2 { get; set; }
             [XmlAttribute]
-            public string m { get; set; } = @"Materials\window.xml";
+            public string t { get; set; }
             [XmlAttribute]
-            public string c { get; set; } = "0xffffffff";
+            public string m { get; set; }
             [XmlAttribute]
-            public string t3 { get; set; } = @"Textures\railing-glass-cut.png";
+            public string c { get; set; }
             [XmlAttribute]
-            public string m3 { get; set; } = @"Materials\window.xml";
+            public string t3 { get; set; }
             [XmlAttribute]
-            public string c3 { get; set; } = "0xffffffff";
+            public string m3 { get; set; }
             [XmlAttribute]
-            public string t6 { get; set; } = @"Textures\railing-glass-cut.png";
+            public string c3 { get; set; }
             [XmlAttribute]
-            public string m6 { get; set; } = @"Materials\window.xml";
+            public string t6 { get; set; }
             [XmlAttribute]
-            public string c6 { get; set; } = "0xffffffff";
-        }
+            public string m6 { get; set; }
+            [XmlAttribute]
+            public string c6 { get; set; }
+            [XmlAttribute]
+            public string y { get; set; }
 
-        public class RailingRight
-        {
-            [XmlAttribute]
-            public string refx1 { get; set; } = "inrun";
-            [XmlAttribute]
-            public string refx2 { get; set; } = "dhill";
-            [XmlAttribute]
-            public string guard { get; set; } = "false";
-            [XmlAttribute]
-            public string type { get; set; } = "glass";
-            [XmlAttribute]
-            public string h { get; set; } = "1";
-            [XmlAttribute]
-            public string w { get; set; } = "0.1";
-            [XmlAttribute]
-            public string z1 { get; set; } = "-2";
-            [XmlAttribute]
-            public string z2 { get; set; } = "-2";
-            [XmlAttribute]
-            public string t { get; set; } = @"Textures\railing-glass.png";
-            [XmlAttribute]
-            public string m { get; set; } = @"Materials\window.xml";
-            [XmlAttribute]
-            public string c { get; set; } = "0xffffffff";
-            [XmlAttribute]
-            public string t3 { get; set; } = @"Textures\railing-glass-cut.png";
-            [XmlAttribute]
-            public string m3 { get; set; } = @"Materials\window.xml";
-            [XmlAttribute]
-            public string c3 { get; set; } = "0xffffffff";
-            [XmlAttribute]
-            public string t6 { get; set; } = @"Textures\railing-glass-cut.png";
-            [XmlAttribute]
-            public string m6 { get; set; } = @"Materials\window.xml";
-            [XmlAttribute]
-            public string c6 { get; set; } = "0xffffffff";
         }
 
         public class Pillar
@@ -725,6 +615,12 @@ namespace HillEditor.Models
             public string reflz { get; set; } = "inrun-left";
             [XmlAttribute]
             public string top { get; set; } = "false";
+            [XmlAttribute]
+            public string ty { get; set; }
+            [XmlAttribute]
+            public string step { get; set; }
+            [XmlAttribute]
+            public string count { get; set; }
         }
 
         public void Save(string fileName)
@@ -736,13 +632,102 @@ namespace HillEditor.Models
             XmlWriterSettings settings = new XmlWriterSettings
             {
                 Indent = true,
-                OmitXmlDeclaration = true
+                OmitXmlDeclaration = true,
+
             };
 
             using (XmlWriter xmlWriter = XmlWriter.Create(fileName, settings))
             {
                 serializer.Serialize(xmlWriter, this, emptyNamespaces);
             }
+        }
+        public double ScaleCounter(string userhillsize, string hillsize)
+        {
+            var scale = 1.0;
+            if (userhillsize != "")
+            {
+                scale = Convert.ToDouble(userhillsize) / Convert.ToDouble(hillsize);
+            }
+            return scale;
+        }
+
+
+        public void BasicEditor(Hill hill, double scale, double userhillsize)
+        {
+            //e * ((-0.001 * userhillsize) + 1.15)
+            //t  * 0.65
+            // gates location point - 16,39
+
+
+            //inrun profile
+            hill.inrun.profile.e = Math.Round((Convert.ToDouble(hill.inrun.profile.e) * ((-0.0009 * userhillsize) + 1.101) * scale), 2).ToString().Replace(',', '.');
+            hill.inrun.profile.es = Math.Round((Convert.ToDouble(hill.inrun.profile.e.ToString().Replace('.', ',')) * 0.1639), 2).ToString().Replace(',', '.');
+            hill.inrun.profile.t = Math.Round((Convert.ToDouble(hill.inrun.profile.e.ToString().Replace('.', ',')) * 0.0588), 2).ToString().Replace(',', '.');
+            hill.inrun.profile.r1 = Math.Round((Convert.ToDouble(hill.inrun.profile.r1) * scale), 2).ToString().Replace(',', '.');
+            hill.inrun.profile.s = Math.Round((Convert.ToDouble(hill.inrun.profile.s) * 0.5 *scale), 2).ToString().Replace(',', '.');
+            //hill.inrun.profile.alpha = Math.Round(1470 / (Convert.ToDouble(hill.inrun.profile.e.ToString().Replace('.', ','))+50), 2).ToString().Replace(',', '.');
+            hill.inrun.profile.b1 = Math.Round((Convert.ToDouble(hill.inrun.profile.b1) * scale), 2).ToString().Replace(',', '.');
+            hill.inrun.profile.z0 = Math.Round((Convert.ToDouble(hill.inrun.profile.z0) * scale), 2).ToString().Replace(',', '.');
+            hill.inrun.profile.l = Math.Round((Convert.ToDouble(hill.inrun.profile.l) * scale), 2).ToString().Replace(',', '.');
+            hill.inrun.profile.f = Math.Round((Convert.ToDouble(hill.inrun.profile.f) * scale), 2).ToString().Replace(',', '.');
+            
+            //frame
+            hill.inrun.frame.bh = Math.Round((Convert.ToDouble(hill.inrun.frame.bh) * scale), 2).ToString().Replace(',', '.');
+            
+            //downhill profile
+            hill.dhill.profile.h = Math.Round((Convert.ToDouble(hill.dhill.profile.h) * scale), 2).ToString().Replace(',', '.');
+            hill.dhill.profile.n = Math.Round((Convert.ToDouble(hill.dhill.profile.n) * scale), 2).ToString().Replace(',', '.');
+            hill.dhill.profile.l1 = Math.Round((Convert.ToDouble(hill.dhill.profile.l1) * scale), 2).ToString().Replace(',', '.');
+            hill.dhill.profile.l2 = Math.Round((Convert.ToDouble(hill.dhill.profile.l2) * scale), 2).ToString().Replace(',', '.');
+            //hill.dhill.profile.a = Math.Round((Convert.ToDouble(hill.dhill.profile.a) * scale), 2).ToString().Replace(',', '.');
+            hill.dhill.profile.rl = Math.Round((Convert.ToDouble(hill.dhill.profile.rl) * scale), 2).ToString().Replace(',', '.');
+            hill.dhill.profile.r2 = Math.Round((Convert.ToDouble(hill.dhill.profile.r2) * 1.2 * scale), 2).ToString().Replace(',', '.');
+            hill.dhill.profile.b0 = Math.Round((Convert.ToDouble(hill.dhill.profile.b0) * scale), 2).ToString().Replace(',', '.');
+            hill.dhill.profile.bk = Math.Round((Convert.ToDouble(hill.dhill.profile.bk) * scale), 2).ToString().Replace(',', '.');
+            hill.dhill.profile.ba = Math.Round((Convert.ToDouble(hill.dhill.profile.ba) * scale), 2).ToString().Replace(',', '.');
+            hill.dhill.profile.hr = Math.Round((Convert.ToDouble(hill.dhill.profile.hr) * scale), 2).ToString().Replace(',', '.');
+            hill.dhill.profile.nr = Math.Round((Convert.ToDouble(hill.dhill.profile.nr) * scale), 2).ToString().Replace(',', '.');
+            hill.dhill.profile.ar = Math.Round((Convert.ToDouble(hill.dhill.profile.ar) * scale), 2).ToString().Replace(',', '.');
+            hill.dhill.profile.k = Math.Round((Convert.ToDouble(hill.dhill.profile.k) * scale), 0).ToString().Replace(',', '.');
+            hill.dhill.profile.hs = Math.Round((Convert.ToDouble(hill.dhill.profile.hs) * scale), 0).ToString().Replace(',', '.');
+
+            //startgate
+            hill.inrun.startgate.max = Math.Round((Convert.ToDouble(hill.inrun.startgate.max) * 0.7 * scale), 0).ToString().Replace(',', '.');
+            hill.inrun.startgate.Default = Math.Round((Convert.ToDouble(hill.inrun.startgate.Default) * 0.7 * scale), 0).ToString().Replace(',', '.');
+
+            //lights
+            hill.dhill.lights.x0 = Math.Round((Convert.ToDouble(hill.dhill.lights.x0) * scale), 2).ToString().Replace(',', '.');
+            hill.dhill.lights.x1 = Math.Round((Convert.ToDouble(hill.dhill.lights.x1) * scale), 2).ToString().Replace(',', '.');
+            hill.dhill.lights.d = Math.Round((Convert.ToDouble(hill.dhill.lights.d) * 0.5 * scale), 2).ToString().Replace(',', '.');
+            
+            //windflags
+            hill.dhill.windflags.h = Math.Round((Convert.ToDouble(hill.dhill.windflags.h) * scale), 2).ToString().Replace(',', '.');
+            hill.dhill.windflags.d = Math.Round((Convert.ToDouble(hill.dhill.windflags.d) * scale), 2).ToString().Replace(',', '.');
+            hill.dhill.windflags.l = Math.Round((Convert.ToDouble(hill.dhill.windflags.l) * scale), 2).ToString().Replace(',', '.');
+
+            //label
+            hill.dhill.label.summerd = Math.Round((Convert.ToDouble(hill.dhill.label.summerd) * scale), 0).ToString().Replace(',', '.');
+            hill.dhill.label.winterd = Math.Round((Convert.ToDouble(hill.dhill.label.winterd) * scale), 0).ToString().Replace(',', '.');
+            hill.dhill.label.textsize = Math.Round((Convert.ToDouble(hill.dhill.label.textsize) * scale), 2).ToString().Replace(',', '.');
+            
+            //lines
+            hill.dhill.lines.summermin = Math.Round((Convert.ToDouble(hill.dhill.lines.summermin) * scale), 0).ToString().Replace(',', '.');
+            hill.dhill.lines.summermax = Math.Round((Convert.ToDouble(hill.dhill.lines.summermax) * scale), 0).ToString().Replace(',', '.');
+            hill.dhill.lines.wintermin = Math.Round((Convert.ToDouble(hill.dhill.lines.wintermin) * scale), 0).ToString().Replace(',', '.');
+            hill.dhill.lines.wintermax = Math.Round((Convert.ToDouble(hill.dhill.lines.wintermax) * scale), 0).ToString().Replace(',', '.');
+
+            //numbers
+            hill.dhill.numbers.min = Math.Round((Convert.ToDouble(hill.dhill.numbers.min) * scale), 0).ToString().Replace(',', '.');
+            hill.dhill.numbers.max = Math.Round((Convert.ToDouble(hill.dhill.numbers.max) * scale), 0).ToString().Replace(',', '.');
+
+            //stairs
+            hill.stairs.ElementAt(0).x2 = Math.Round((Convert.ToDouble(hill.stairs.ElementAt(0).x2) * scale), 0).ToString().Replace(',', '.');
+            hill.stairs.ElementAt(1).x2 = Math.Round((Convert.ToDouble(hill.stairs.ElementAt(1).x2) * scale), 0).ToString().Replace(',', '.');
+            
+            //audience
+            hill.terrain.audience.count = Math.Round((Convert.ToDouble(hill.terrain.audience.count) * scale), 0).ToString().Replace(',', '.');
+            hill.terrain.audience.d = Math.Round((Convert.ToDouble(hill.terrain.audience.d) * scale), 0).ToString().Replace(',', '.');
+            hill.terrain.audience.x0 = Math.Round((Convert.ToDouble(hill.terrain.audience.x0) * scale), 1).ToString().Replace(',', '.');
         }
     }
 }
